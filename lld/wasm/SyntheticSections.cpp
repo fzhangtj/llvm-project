@@ -516,7 +516,7 @@ void NameSection::writeBody() {
     }
   }
   for (const InputFunction *f : out.functionSec->inputFunctions) {
-    if (!f->getName().empty()) {
+    if (!f->getName().empty() || !f->getDebugName().empty()) {
       writeUleb128(sub.os, f->getFunctionIndex(), "func index");
       if (!f->getDebugName().empty()) {
         writeStr(sub.os, f->getDebugName(), "symbol name");
